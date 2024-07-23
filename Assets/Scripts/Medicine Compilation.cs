@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ public class MedicineCompilation : MonoBehaviour
     [SerializeField] GameObject PrefabRed;
     [SerializeField] GameObject PrefabGreen;
     [SerializeField] GameObject PrefabBlue;
-    [SerializeField] Text EqualText;
+    [SerializeField] TextMeshProUGUI EqualText;
 
     private void Awake()
     {
