@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Tp : MonoBehaviour
 {
     // Name of the scene to switch to
-    public string sceneName;
 
     // This function is called when the collider attached to this object enters a collision with another collider
     private void OnTriggerEnter2D(Collider2D other)
@@ -15,7 +14,7 @@ public class Tp : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Load the specified scene
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene("MedicineFabrication");
         }
     }
 }

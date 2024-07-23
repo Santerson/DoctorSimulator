@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MedicineCompilation : MonoBehaviour
@@ -109,6 +110,7 @@ public class MedicineCompilation : MonoBehaviour
         {
             EqualText.text = "MATCH!";
         }
+        SceneManager.LoadScene("David Scene");
     }
 
     public void startOrder()
@@ -117,7 +119,11 @@ public class MedicineCompilation : MonoBehaviour
         MedicineOrdered.Clear();
         for (int i = 0; i < 3; ++i)
         {
-            MedicineOrdered.Add(Random.Range(0, 2));
+            MedicineOrdered.Add(Random.Range(0, 3));
+            if (MedicineOrdered[i] == 3)
+            {
+                MedicineOrdered.Add(Random.Range(0, 2));
+            }
         }
         PrintOrder();
     }
