@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput;
     private float forwardInput;
     [SerializeField] private Rigidbody2D playerRb;
-    void Update()
+    void FixedUpdate()
     {
         // Movement
         horizontalInput = Input.GetAxis("Horizontal");
