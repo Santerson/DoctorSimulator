@@ -148,6 +148,6 @@ public class MedicineCompilation : MonoBehaviour
 
     public void GoBack()
     {
-        SceneManager.LoadScene("David Scene");
+        SceneManager.LoadScene("Main");
     }
 }
