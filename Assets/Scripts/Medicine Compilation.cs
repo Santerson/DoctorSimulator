@@ -84,11 +84,11 @@ public class MedicineCompilation : MonoBehaviour
             }
             else if (MedicineOrdered[i] == 1)
             {
-                 medicine = PrefabGreen;
+                medicine = PrefabGreen;
             }
             else if (MedicineOrdered[i] == 2)
             {
-                 medicine = PrefabBlue;
+                medicine = PrefabBlue;
             }
             Instantiate(medicine, new Vector2(Xoffset, -3.84f), Quaternion.identity);
             Xoffset += 1.5f;
@@ -111,7 +111,6 @@ public class MedicineCompilation : MonoBehaviour
         {
             EqualText.text = "MATCH!";
         }
-        SceneManager.LoadScene("David Scene");
     }
 
     public void startOrder()
@@ -145,5 +144,10 @@ public class MedicineCompilation : MonoBehaviour
     {
         MedicinePlayerInputted.Add(2);
         DisplayMedicine();
+    }
+
+    public void GoBack()
+    {
+        SceneManager.LoadScene("David Scene");
     }
 }
