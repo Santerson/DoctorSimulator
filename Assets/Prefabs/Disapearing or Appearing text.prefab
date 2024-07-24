@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2193338401127208195}
   - component: {fileID: 5069206500130935570}
   - component: {fileID: 2442847021124576350}
-  - component: {fileID: 8012395291271375819}
   m_Layer: 5
   m_Name: Disapearing or Appearing text
   m_TagString: Untagged
@@ -103,21 +102,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8012395291271375819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1488965810615761817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23295663f7e96cb45aa58169875726ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PreDuration: 0
-  Duration: 5
-  Message: Replace with your text! (check script settings)
 --- !u!1 &6699671502081326825
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,6 +113,7 @@ GameObject:
   - component: {fileID: 7605363259787319405}
   - component: {fileID: 8288034947728249184}
   - component: {fileID: 3859157996251426924}
+  - component: {fileID: 1798160710444125907}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -252,3 +237,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1798160710444125907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6699671502081326825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23295663f7e96cb45aa58169875726ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreDuration: 0
+  Duration: 5
+  Message: Replace with your text! (check script settings)
