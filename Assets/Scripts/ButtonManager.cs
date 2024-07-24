@@ -11,4 +11,12 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene("Main");
     }
+    public void GoToTips()
+    {
+        SceneManager.LoadScene("Tips");
+    }
+    public void GoToStart()
+    {
+        SceneManager.LoadScene("Start");
+    }
 }
