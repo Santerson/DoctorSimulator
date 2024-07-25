@@ -21,18 +21,18 @@ public class PlayerCloseTo : MonoBehaviour
     {
         DebugExtensions.DrawBox(BottomLeftCornerOfPickupArea, TopRightCornerOfPickupArea, Color.red);
         Vector2 playerPos = FindObjectOfType<PlayerMovement>().transform.position;
-        Debug.Log(playerPos);
+        //Debug.Log(playerPos);
         if (playerPos.x > BottomLeftCornerOfPickupArea.x &&
             playerPos.x < TopRightCornerOfPickupArea.x &&
             playerPos.y < BottomLeftCornerOfPickupArea.y &&
             playerPos.y > TopRightCornerOfPickupArea.y)
         {
-            Debug.Log("Appearing");
+            //Debug.Log("Appearing");
             AppearingItem.SetActive(true);
         }
         else
         {
-            Debug.Log("Disappearing");
+            //Debug.Log("Disappearing");
             AppearingItem.SetActive(false);
         }
     }
