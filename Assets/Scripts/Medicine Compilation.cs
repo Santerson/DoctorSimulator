@@ -13,6 +13,7 @@ public class MedicineCompilation : MonoBehaviour
     [SerializeField] GameObject PrefabGreen;
     [SerializeField] GameObject PrefabBlue;
     [SerializeField] TextMeshProUGUI EqualText;
+    OrdersList orders; 
 
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class MedicineCompilation : MonoBehaviour
         {
             Debug.LogError("Could not find AddBlue button");
         }
+        orders = FindObjectOfType<OrdersList>();
     }
 
     private void Start()
@@ -110,6 +112,9 @@ public class MedicineCompilation : MonoBehaviour
         if (match)
         {
             EqualText.text = "MATCH!";
+            orders.gameObject.SetActive(true);
+            orders.RemoveItem(0);
+            orders.gameObject.SetActive(false);
         }
     }
 
@@ -117,14 +122,12 @@ public class MedicineCompilation : MonoBehaviour
     {
         MedicinePlayerInputted.Clear();
         MedicineOrdered.Clear();
-        for (int i = 0; i < 3; ++i)
+        int[] arr = orders.InternalOrders[0];
+        foreach (int i in arr)
         {
-            MedicineOrdered.Add(Random.Range(0, 3));
-            if (MedicineOrdered[i] == 3)
-            {
-                MedicineOrdered.Add(Random.Range(0, 2));
-            }
+            MedicineOrdered.Add(i);
         }
+        orders.gameObject.SetActive(false);
         PrintOrder();
     }
 
@@ -148,6 +151,7 @@ public class MedicineCompilation : MonoBehaviour
 
     public void GoBack()
     {
+        orders.gameObject.SetActive(true);
         SceneManager.LoadScene("Main");
     }
 }
