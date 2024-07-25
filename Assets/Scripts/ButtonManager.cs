@@ -11,9 +11,9 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene("Main");
     }
-    public void GoToTips()
+    public void GoToCredits()
     {
-        SceneManager.LoadScene("Tips");
+        SceneManager.LoadScene("Credits");
     }
     public void GoToStart()
     {
