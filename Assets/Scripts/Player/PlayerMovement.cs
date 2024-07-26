@@ -13,6 +13,12 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("The rate that the player slows down")]
     [SerializeField] float DampingCoefficient = 0.97f;
 
+    [SerializeField] float sprintSpeed = 4.5f;
+
+    public float stamina = 100;
+    public float staminaDrain = 5f;
+    public bool isSprinting;
+
     Rigidbody2D RefRigidbody = null;
     Animator animator;
 
@@ -33,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
     {
         MovePlayer();
         float speed = RefRigidbody.velocity.magnitude;
+        Debug.Log(stamina);
+        Debug.Log(PlayerMaxMoveSpeed);
     }
 
     void MovePlayer()
@@ -47,6 +55,37 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) { inputVector.x -= 1; } // Left
         if (Input.GetKey(KeyCode.S)) { inputVector.y -= 1; } // Down
         if (Input.GetKey(KeyCode.D)) { inputVector.x += 1; } // Right
+
+        //Sprint function
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (stamina == 0)
+            {
+                isSprinting = false;
+            }
+            else
+            {
+                isSprinting = true;
+            }
+        }
+        else
+        {
+            isSprinting = false;
+        }
+        // Stamina Management
+        if (isSprinting)
+        {
+            PlayerMaxMoveSpeed = sprintSpeed;
+            PlayerAccelerationSpeed = sprintSpeed;
+            stamina -= staminaDrain * Time.deltaTime;
+        }
+        else
+        {
+            PlayerMaxMoveSpeed = 3.0f;
+            PlayerAccelerationSpeed = 5.0f;
+            stamina += 10 * Time.deltaTime;
+        }
+        stamina = Mathf.Clamp(stamina, 0, 100);
 
         // Normalizing the vector so we can have the player move at the correct speed
         inputVector.Normalize();
@@ -65,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
         if (inputVector.sqrMagnitude <= 0.1f)
         {
             // Applying damping effect to slow down the player
-            RefRigidbody.velocity *= DampingCoefficient;
+            RefRigidbody.velocity *= DampingCoefficient * Time.deltaTime;
         }
 
         // Storing current position
