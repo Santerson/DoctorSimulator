@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         MovementInput();
+        Debug.Log(activeSpeed);
     }
 
     void MovementInput()
