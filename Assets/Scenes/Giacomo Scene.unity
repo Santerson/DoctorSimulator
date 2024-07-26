@@ -438,6 +438,7 @@ MonoBehaviour:
   BottomLeftCornerOfPickupArea: {x: 3.65, y: 0.5}
   TopRightCornerOfPickupArea: {x: 10, y: -5}
   AppearingItem: {fileID: 1263538538}
+  Orders: {fileID: 0}
 --- !u!1 &389683131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1030,7 @@ MonoBehaviour:
   BottomLeftCornerOfPickupArea: {x: -3.65, y: 0.5}
   TopRightCornerOfPickupArea: {x: -10, y: -5}
   AppearingItem: {fileID: 1263538538}
+  Orders: {fileID: 0}
 --- !u!1 &938678458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,13 +1513,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25710d7a91fd3884193b6baef4fa9fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSpeed: 3
+  PlayerAccelerationSpeed: 5
+  PlayerMaxMoveSpeed: 3
+  DampingCoefficient: 0.97
   sprintSpeed: 4.5
-  acceleration: 100
-  deceleration: 100
-  isSprinting: 0
   stamina: 100
-  staminaDrain: 1
+  staminaDrain: 20
+  isSprinting: 0
 --- !u!114 &1497113985
 MonoBehaviour:
   m_ObjectHideFlags: 0
