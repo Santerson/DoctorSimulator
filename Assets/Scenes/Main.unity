@@ -1511,13 +1511,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25710d7a91fd3884193b6baef4fa9fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  rotationSpeed: 0
-  sprintSpeed: 5
+  defaultSpeed: 5
+  sprintSpeed: 15
+  acceleration: 8
+  deceleration: 20
+  isSprinting: 0
   stamina: 100
   staminaDrain: 1
-  isSprinting: 0
-  playerRb: {fileID: 1497113981}
 --- !u!114 &1497113985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1804,6 +1804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DetectionBottomLeft: {x: -6.18, y: 2.89}
   DetectionTopRight: {x: -2.73, y: 5.17}
+  text: {fileID: 0}
 --- !u!1 &1945365247
 GameObject:
   m_ObjectHideFlags: 0
