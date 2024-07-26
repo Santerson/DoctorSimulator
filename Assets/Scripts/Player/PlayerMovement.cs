@@ -4,94 +4,76 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float defaultSpeed = 10.0f;
-    public float sprintSpeed = 30.0f;
-    public float acceleration = 8.0f;
-    public float deceleration = 12.0f;
-    public bool isSprinting;
-    public float stamina = 100;
-    public float staminaDrain = 1.0f;
+    [Tooltip("The speed at which the player ACCELERATES at")]
+    [SerializeField] float PlayerAccelerationSpeed = 5.0f;
 
-    private Rigidbody2D rb;
-    private float activeSpeed;
+    [Tooltip("The Player's max move speed")]
+    [SerializeField] float PlayerMaxMoveSpeed = 3.0f;
 
-    // Start is called before the first frame update
-    void Start()
+    [Tooltip("The rate that the player slows down")]
+    [SerializeField] float DampingCoefficient = 0.97f;
+
+    Rigidbody2D RefRigidbody = null;
+    Animator animator;
+
+    Vector2 position = Vector2.zero;
+
+    private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        activeSpeed = defaultSpeed;
+        RefRigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
+        if (RefRigidbody == null)
+        {
+            Debug.LogError("Player must have a Rigidbody2D component");
+        }
+
+        if (animator == null)
+        {
+            Debug.LogError("Player must have an Animator component");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        MovementInput();
-        Debug.Log(activeSpeed);
+        MovePlayer();
+        float speed = RefRigidbody.velocity.magnitude;
     }
 
-    void MovementInput()
+    void MovePlayer()
     {
-        // Read input and store as direction vector
-        Vector2 moveInput;
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
-        moveInput.Normalize();
+        if (RefRigidbody == null) return;
 
-        // Determine speed based on shift key
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            activeSpeed = sprintSpeed;
-            isSprinting = true;
-        }
-        else
-        {
-            activeSpeed = defaultSpeed;
-            isSprinting = false;
-        }
-        if (isSprinting)
-        {
-            stamina -= staminaDrain * Time.deltaTime;
-        }
-        else
-        {
-            stamina += 10 * Time.deltaTime;
-        }
-        stamina = Mathf.Clamp(stamina, 0, 100);
+        // Creating a move vector
+        Vector2 inputVector = Vector2.zero;
 
-        // Fetch current velocity
-        Vector2 currentVelocity = rb.velocity;
+        // Checking for player input on the keyboard
+        if (Input.GetKey(KeyCode.W)) { inputVector.y += 1; } // Up
+        if (Input.GetKey(KeyCode.A)) { inputVector.x -= 1; } // Left
+        if (Input.GetKey(KeyCode.S)) { inputVector.y -= 1; } // Down
+        if (Input.GetKey(KeyCode.D)) { inputVector.x += 1; } // Right
 
-        // If there is any movement input
-        if (moveInput != Vector2.zero)
+        // Normalizing the vector so we can have the player move at the correct speed
+        inputVector.Normalize();
+
+        // Applying acceleration to move the player
+        RefRigidbody.AddForce(inputVector * PlayerAccelerationSpeed);
+
+        // Checking if the player is moving faster than their maximum movement speed
+        if (RefRigidbody.velocity.magnitude > PlayerMaxMoveSpeed)
         {
-            currentVelocity = moveInput * currentVelocity.magnitude;
-            // If velocity not yeat reached speed, accelerate
-            if (currentVelocity.magnitude < activeSpeed)
-            {
-                currentVelocity += acceleration * Time.deltaTime * moveInput;
-            }
-            // Ensure velocity doesn't go over speed
-            else
-            {
-                currentVelocity = activeSpeed * moveInput;
-            }
-        }
-        // Checking if there is no input
-        else
-        {
-            // If there is still movement, we need to decelerate
-            if (currentVelocity.magnitude > 0)
-            {
-                currentVelocity -= deceleration * Time.deltaTime * currentVelocity.normalized;
-            }
-            // Ensure velocity doesn't go below zero
-            else
-            {
-                currentVelocity = Vector2.zero;
-            }
+            // Limiting the speed to PlayerMaxMoveSpeed
+            RefRigidbody.velocity = RefRigidbody.velocity.normalized * PlayerMaxMoveSpeed;
         }
 
-        // Update rigidbody velocity
-        rb.velocity = currentVelocity;
+        // Damping the movement when no input is given
+        if (inputVector.sqrMagnitude <= 0.1f)
+        {
+            // Applying damping effect to slow down the player
+            RefRigidbody.velocity *= DampingCoefficient;
+        }
+
+        // Storing current position
+        position = transform.position;
     }
 }

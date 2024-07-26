@@ -9,6 +9,7 @@ public class TakeDepositOrders : MonoBehaviour
     [SerializeField] GameObject PrefabGreenMed;
     [SerializeField] GameObject PrefabRedMed;
     [SerializeField] Vector2 MedPosition;
+    public bool OrderTaken = false;
 
     private void OnDrawGizmosSelected()
     {
@@ -27,13 +28,22 @@ public class TakeDepositOrders : MonoBehaviour
 
     private void PrintMedicine()
     {
-
+        float xOffset = 0;
         for (int i = 0; i < order.Count; i++)
         {
-            if (order[i] > 0)
+            if (order[i] == 0)
             {
-
+                Instantiate(PrefabRedMed, new Vector2(MedPosition.x + xOffset, MedPosition.y) , Quaternion.identity);
             }
+            else if (order[i] == 1)
+            {
+                Instantiate(PrefabGreenMed, new Vector2(MedPosition.x + xOffset, MedPosition.y), Quaternion.identity);
+            }
+            else if (order[i] == 2)
+            {
+                Instantiate(PrefabBlueMed, new Vector2(MedPosition.x + xOffset, MedPosition.y), Quaternion.identity);
+            }
+            xOffset += 0.3f;
         }
     }
 }

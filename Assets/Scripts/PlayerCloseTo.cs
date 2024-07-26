@@ -7,6 +7,7 @@ public class PlayerCloseTo : MonoBehaviour
     [SerializeField] Vector2 BottomLeftCornerOfPickupArea = new Vector2(3, 3);
     [SerializeField] Vector2 TopRightCornerOfPickupArea = new Vector2(-3, -3);
     [SerializeField] GameObject AppearingItem = null;
+    [SerializeField] GameObject Orders;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,16 +17,22 @@ public class PlayerCloseTo : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        DebugExtensions.DrawBox(BottomLeftCornerOfPickupArea, TopRightCornerOfPickupArea, Color.red);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        DebugExtensions.DrawBox(BottomLeftCornerOfPickupArea, TopRightCornerOfPickupArea, Color.red);
+        
         Vector2 playerPos = FindObjectOfType<PlayerMovement>().transform.position;
         //Debug.Log(playerPos);
         if (playerPos.x > BottomLeftCornerOfPickupArea.x &&
             playerPos.x < TopRightCornerOfPickupArea.x &&
             playerPos.y < BottomLeftCornerOfPickupArea.y &&
-            playerPos.y > TopRightCornerOfPickupArea.y)
+            playerPos.y > TopRightCornerOfPickupArea.y &&
+            !Orders.GetComponent<TakeDepositOrders>().OrderTaken)
         {
             //Debug.Log("Appearing");
             AppearingItem.SetActive(true);
