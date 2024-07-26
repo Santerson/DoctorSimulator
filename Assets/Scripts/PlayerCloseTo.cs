@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerCloseTo : MonoBehaviour
 {
     [SerializeField] Vector2 BottomLeftCornerOfPickupArea = new Vector2(3, 3);
     [SerializeField] Vector2 TopRightCornerOfPickupArea = new Vector2(-3, -3);
-    [SerializeField] GameObject AppearingItem = null;
+    [SerializeField] public TextMeshProUGUI AppearingItem = null;
     [SerializeField] GameObject Orders;
     // Start is called before the first frame update
     void Start()
@@ -35,12 +36,22 @@ public class PlayerCloseTo : MonoBehaviour
             !Orders.GetComponent<TakeDepositOrders>().OrderTaken)
         {
             //Debug.Log("Appearing");
-            AppearingItem.SetActive(true);
+            AppearingItem.SetText("Press Space to take order");
         }
         else
         {
             //Debug.Log("Disappearing");
-            AppearingItem.SetActive(false);
+            AppearingItem.SetText("");
+        }
+
+        if (playerPos.x > BottomLeftCornerOfPickupArea.x &&
+            playerPos.x < TopRightCornerOfPickupArea.x &&
+            playerPos.y < BottomLeftCornerOfPickupArea.y &&
+            playerPos.y > TopRightCornerOfPickupArea.y &&
+            !Orders.GetComponent<TakeDepositOrders>().OrderTaken &&
+            Input.GetKeyDown(KeyCode.Space))
+        {
+            FindObjectOfType<TakeDepositOrders>().TakeOrder();
         }
 
         if (playerPos.x > BottomLeftCornerOfPickupArea.x &&
@@ -55,7 +66,6 @@ public class PlayerCloseTo : MonoBehaviour
                 PickupableObjects curr = Objs[i];
                 if (curr.BeingHeld)
                 {
-                    Debug.Log($"This is a {curr.name} object");
                     if (curr.name == "PickupRed")
                     {
                         FindObjectOfType<TakeDepositOrders>().CheckGivenMedicine(0);

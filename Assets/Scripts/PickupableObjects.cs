@@ -9,6 +9,7 @@ public class PickupableObjects : MonoBehaviour
 {
     [SerializeField] Vector2 DetectionBottomLeft;
     [SerializeField] Vector2 DetectionTopRight;
+    Vector2 Position;
     [SerializeField] TextMeshProUGUI text;
     GameObject Player;
     public bool BeingHeld = false;
@@ -16,6 +17,7 @@ public class PickupableObjects : MonoBehaviour
     private void Awake()
     {
         Player = FindObjectOfType<PlayerMovement>().gameObject;
+        Position = transform.position;
     }
 
     // Start is called before the first frame update
