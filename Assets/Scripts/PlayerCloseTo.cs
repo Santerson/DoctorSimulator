@@ -16,6 +16,11 @@ public class PlayerCloseTo : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        DebugExtensions.DrawBox(BottomLeftCornerOfPickupArea, TopRightCornerOfPickupArea, Color.magenta);
+    }
+
     // Update is called once per frame
     void Update()
     {

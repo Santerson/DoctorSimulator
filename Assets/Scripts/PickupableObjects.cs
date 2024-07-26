@@ -21,7 +21,7 @@ public class PickupableObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
     }
 
     private void OnDrawGizmosSelected()
@@ -33,12 +33,10 @@ public class PickupableObjects : MonoBehaviour
     void Update()
     {
         Vector2 playerPos = FindObjectOfType<PlayerMovement>().transform.position;
-        if (!FindObjectOfType<Pickup>().Holding  && SUtilities.IsInRange(playerPos, DetectionBottomLeft, DetectionTopRight)) text.SetText("Space to pickup");
-        else { text.SetText(""); }
+        if (!FindObjectOfType<Pickup>().Holding  && SUtilities.IsInRange(playerPos, DetectionBottomLeft, DetectionTopRight)) FadeIn();
+        else { FadeOut(); }
         if (SUtilities.IsInRange(playerPos, DetectionBottomLeft, DetectionTopRight))
         {
-            if (!FindObjectOfType<Pickup>().Holding) text.SetText("Space to pickup");
-            else { text.SetText(""); }
             if (!FindObjectOfType<Pickup>().Holding && Input.GetKey(KeyCode.Space))
             {
                 FindObjectOfType<Pickup>().Holding = true;
@@ -54,5 +52,25 @@ public class PickupableObjects : MonoBehaviour
     private void CarriedByPlayer()
     {
         transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + 1);
+    }
+
+    void FadeOut()
+    {
+        if (text.color.a <= 0)
+        {
+            return;
+        }
+        text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - 0.01f);
+        
+    }
+
+    void FadeIn()
+    {
+        if (text.color.a >= 1)
+        {
+            return;
+        }
+        text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a + 0.01f);
+        
     }
 }
