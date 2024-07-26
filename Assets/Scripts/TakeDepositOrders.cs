@@ -18,6 +18,7 @@ public class TakeDepositOrders : MonoBehaviour
 
     public void TakeOrder()
     {
+        OrderTaken = true;
         int rand = Random.Range(1, 4);
         for (int i = 0; i < rand; i++)
         {
@@ -45,5 +46,10 @@ public class TakeDepositOrders : MonoBehaviour
             }
             xOffset += 0.3f;
         }
+    }
+
+    public void CheckGivenMedicine(int medicine)
+    {
+
     }
 }

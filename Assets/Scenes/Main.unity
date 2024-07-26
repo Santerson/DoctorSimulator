@@ -1232,7 +1232,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 64825791938583779, guid: 1a50180ad4929a648bb28f0bb3843a9a, type: 3}
       propertyPath: m_Name
-      value: PickupableMedicineBlue (2)
+      value: PickupGreen
       objectReference: {fileID: 0}
     - target: {fileID: 163526219885748930, guid: 1a50180ad4929a648bb28f0bb3843a9a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1475,13 +1475,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25710d7a91fd3884193b6baef4fa9fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSpeed: 5
-  sprintSpeed: 15
-  acceleration: 7.5
-  deceleration: 20
-  isSprinting: 0
-  stamina: 100
-  staminaDrain: 1
+  PlayerAccelerationSpeed: 5
+  PlayerMaxMoveSpeed: 3
+  DampingCoefficient: 0.97
 --- !u!114 &1497113985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1505,7 +1501,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 64825791938583779, guid: 1a50180ad4929a648bb28f0bb3843a9a, type: 3}
       propertyPath: m_Name
-      value: PickupableMedicineBlue (1)
+      value: PickupRed
       objectReference: {fileID: 0}
     - target: {fileID: 163526219885748930, guid: 1a50180ad4929a648bb28f0bb3843a9a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1880,7 +1876,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 64825791938583779, guid: 1a50180ad4929a648bb28f0bb3843a9a, type: 3}
       propertyPath: m_Name
-      value: PickupableMedicineBlue
+      value: PickupBlue
       objectReference: {fileID: 0}
     - target: {fileID: 163526219885748930, guid: 1a50180ad4929a648bb28f0bb3843a9a, type: 3}
       propertyPath: m_LocalPosition.x

@@ -11,7 +11,7 @@ public class PickupableObjects : MonoBehaviour
     [SerializeField] Vector2 DetectionTopRight;
     [SerializeField] TextMeshProUGUI text;
     GameObject Player;
-    bool BeingHeld = false;
+    public bool BeingHeld = false;
 
     private void Awake()
     {

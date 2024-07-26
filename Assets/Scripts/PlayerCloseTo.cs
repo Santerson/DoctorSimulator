@@ -42,5 +42,34 @@ public class PlayerCloseTo : MonoBehaviour
             //Debug.Log("Disappearing");
             AppearingItem.SetActive(false);
         }
+
+        if (playerPos.x > BottomLeftCornerOfPickupArea.x &&
+            playerPos.x < TopRightCornerOfPickupArea.x &&
+            playerPos.y < BottomLeftCornerOfPickupArea.y &&
+            playerPos.y > TopRightCornerOfPickupArea.y &&
+            FindObjectOfType<Pickup>().Holding)
+        {
+            PickupableObjects[] Objs = FindObjectsOfType<PickupableObjects>();
+            for (int i = 0; i < Objs.Length; i++)
+            {
+                PickupableObjects curr = Objs[i];
+                if (curr.BeingHeld)
+                {
+                    Debug.Log($"This is a {curr.name} object");
+                    if (curr.name == "PickupRed")
+                    {
+                        FindObjectOfType<TakeDepositOrders>().CheckGivenMedicine(0);
+                    }
+                    if (curr.name == "PickupGreen")
+                    {
+                        FindObjectOfType<TakeDepositOrders>().CheckGivenMedicine(1);
+                    }
+                    if (curr.name == "PickupBlue")
+                    {
+                        FindObjectOfType<TakeDepositOrders>().CheckGivenMedicine(2);
+                    }
+                }
+            }
+        }
     }
 }
