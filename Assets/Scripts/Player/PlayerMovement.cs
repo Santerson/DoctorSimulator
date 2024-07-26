@@ -27,11 +27,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogError("Player must have a Rigidbody2D component");
         }
-
-        if (animator == null)
-        {
-            Debug.LogError("Player must have an Animator component");
-        }
     }
 
     void Update()
