@@ -1513,8 +1513,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSpeed: 5
   sprintSpeed: 15
-  acceleration: 8
-  deceleration: 20
+  acceleration: 15
+  deceleration: 100
   isSprinting: 0
   stamina: 100
   staminaDrain: 1
