@@ -60,7 +60,7 @@ public class TakeDepositOrders : MonoBehaviour
         if (isInOrder)
         {
             FindObjectOfType<PlayerCloseTo>().AppearingItem.text = "Press space to deposit";
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 GaveMedicine(medicine);
             }
@@ -77,17 +77,50 @@ public class TakeDepositOrders : MonoBehaviour
         {
             if (order[i] == medicine)
             {
-                order.Remove(i);
-                Debug.Log("removed an object!");
+                if (order.Count == 1)
+                {
+                    CompletedOrder();
+                }
+                else
+                {
+                    order.Remove(i);
+                }
+                Debug.LogWarning("removed an object!");
                 break;
             }
         }
+        ClearInstantiatedObjects();
+        PrintMedicine();
+    }
 
-        foreach(GameObject obj in InstantiatedObjects)
+    void CompletedOrder()
+    {
+        order.Clear();
+        ClearInstantiatedObjects();
+    }
+
+    void ClearInstantiatedObjects()
+    {
+        foreach (GameObject obj in InstantiatedObjects)
         {
             Destroy(obj);
         }
+        InstantiatedObjects.Clear();
+    }
 
-        PrintMedicine();
+    private void Update()
+    {
+        string str = "";
+        for (int i = 0; i < order.Count; i++)
+        {
+            str += order[i] + ", ";
+        }
+        Debug.LogWarning(str);
+        str = "";
+        for (int i = 0; i < InstantiatedObjects.Count; i++)
+        {
+            str += InstantiatedObjects[i].gameObject + ", ";
+        }
+        Debug.LogWarning(str);
     }
 }

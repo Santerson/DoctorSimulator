@@ -70,11 +70,11 @@ public class PlayerCloseTo : MonoBehaviour
                     {
                         FindObjectOfType<TakeDepositOrders>().CheckGivenMedicine(0);
                     }
-                    if (curr.name == "PickupGreen")
+                    else if (curr.name == "PickupGreen")
                     {
                         FindObjectOfType<TakeDepositOrders>().CheckGivenMedicine(1);
                     }
-                    if (curr.name == "PickupBlue")
+                    else if (curr.name == "PickupBlue")
                     {
                         FindObjectOfType<TakeDepositOrders>().CheckGivenMedicine(2);
                     }
