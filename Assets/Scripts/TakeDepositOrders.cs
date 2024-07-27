@@ -1,6 +1,8 @@
 using JetBrains.Annotations;
+
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class TakeDepositOrders : MonoBehaviour
@@ -11,6 +13,7 @@ public class TakeDepositOrders : MonoBehaviour
     [SerializeField] GameObject PrefabGreenMed;
     [SerializeField] GameObject PrefabRedMed;
     [SerializeField] Vector2 MedPosition;
+    public GameObject ObjectHolding;
     public bool OrderTaken = false;
 
     private void OnDrawGizmosSelected()
@@ -83,11 +86,19 @@ public class TakeDepositOrders : MonoBehaviour
                 }
                 else
                 {
-                    order.Remove(i);
+                    order.RemoveAt(i);
                 }
                 Debug.LogWarning("removed an object!");
                 break;
             }
+        }
+        try
+        {
+            ObjectHolding.GetComponent<PickupableObjects>().DropByPlayer();
+        }
+        catch 
+        {
+            Debug.LogError($"Unable to clear object from player: Object does not have a Pickupable component.");
         }
         ClearInstantiatedObjects();
         PrintMedicine();
@@ -97,6 +108,7 @@ public class TakeDepositOrders : MonoBehaviour
     {
         order.Clear();
         ClearInstantiatedObjects();
+        OrderTaken = false;
     }
 
     void ClearInstantiatedObjects()

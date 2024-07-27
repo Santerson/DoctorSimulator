@@ -17,13 +17,13 @@ public class PickupableObjects : MonoBehaviour
     private void Awake()
     {
         Player = FindObjectOfType<PlayerMovement>().gameObject;
-        Position = transform.position;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
+        Position = transform.position;
     }
 
     private void OnDrawGizmosSelected()
@@ -43,6 +43,7 @@ public class PickupableObjects : MonoBehaviour
             {
                 FindObjectOfType<Pickup>().Holding = true;
                 BeingHeld = true;
+                FindObjectOfType<TakeDepositOrders>().ObjectHolding = gameObject;
             }
         }
         if (BeingHeld)
@@ -54,6 +55,21 @@ public class PickupableObjects : MonoBehaviour
     private void CarriedByPlayer()
     {
         transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + 1);
+    }
+
+    /// <summary>
+    /// Script that will destroy the object the player is holding and return it
+    /// </summary>
+    public void DropByPlayer()
+    {
+        if (BeingHeld == false) 
+        {
+            Debug.LogError("Player is not holding anything: Returning");
+            return; 
+        }
+        BeingHeld = false;
+        FindObjectOfType<Pickup>().Holding = false;
+        transform.position = Position;
     }
 
     void FadeOut()
