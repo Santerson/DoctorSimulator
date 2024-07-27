@@ -8,6 +8,7 @@ public class TrashCan : MonoBehaviour
     [SerializeField] Vector2 DetectionBottomLeft;
     [SerializeField] Vector2 DetectionTopRight;
     [SerializeField] TextMeshProUGUI text;
+    [SerializeField] ParticleSystem TrashParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class TrashCan : MonoBehaviour
         {
             if (FindObjectOfType<Pickup>().Holding && Input.GetKey(KeyCode.Space))
             {
+                TrashParticles.Play();
                 FindObjectOfType<Pickup>().Holding = false;
                 FindObjectOfType<TakeDepositOrders>().ObjectHolding.GetComponent<PickupableObjects>().DropByPlayer();
             }

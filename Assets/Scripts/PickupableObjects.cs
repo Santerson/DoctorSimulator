@@ -43,6 +43,7 @@ public class PickupableObjects : MonoBehaviour
             {
                 FindObjectOfType<Pickup>().Holding = true;
                 BeingHeld = true;
+                text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
                 FindObjectOfType<TakeDepositOrders>().ObjectHolding = gameObject;
             }
         }
@@ -54,7 +55,7 @@ public class PickupableObjects : MonoBehaviour
 
     private void CarriedByPlayer()
     {
-        transform.position = new Vector2(Player.transform.position.x, Player.transform.position.y + 1);
+        transform.position = new Vector2(Player.transform.position.x - 0.05f, Player.transform.position.y - 0.3f);
     }
 
     /// <summary>

@@ -13,12 +13,18 @@ public class TakeDepositOrders : MonoBehaviour
     [SerializeField] GameObject PrefabGreenMed;
     [SerializeField] GameObject PrefabRedMed;
     [SerializeField] Vector2 MedPosition;
+    [SerializeField] SpriteRenderer SpeechBubble;
     public GameObject ObjectHolding;
     public bool OrderTaken = false;
 
     private void OnDrawGizmosSelected()
     {
         DebugExtensions.DrawBox(MedPosition, new Vector2(MedPosition.x + 0.3f, MedPosition.y + 0.3f), Color.green);
+    }
+
+    private void Start()
+    {
+        SpeechBubble.enabled = false;
     }
 
     public void TakeOrder()
@@ -34,6 +40,7 @@ public class TakeDepositOrders : MonoBehaviour
 
     private void PrintMedicine()
     {
+        SpeechBubble.enabled = true;
         float xOffset = 0;
         for (int i = 0; i < order.Count; i++)
         {
@@ -101,7 +108,7 @@ public class TakeDepositOrders : MonoBehaviour
             Debug.LogError($"Unable to clear object from player: Object does not have a Pickupable component.");
         }
         ClearInstantiatedObjects();
-        PrintMedicine();
+        if (order.Count != 0)PrintMedicine();
     }
 
     void CompletedOrder()
@@ -109,6 +116,7 @@ public class TakeDepositOrders : MonoBehaviour
         order.Clear();
         ClearInstantiatedObjects();
         OrderTaken = false;
+        SpeechBubble.enabled = false;
     }
 
     void ClearInstantiatedObjects()
@@ -118,21 +126,5 @@ public class TakeDepositOrders : MonoBehaviour
             Destroy(obj);
         }
         InstantiatedObjects.Clear();
-    }
-
-    private void Update()
-    {
-        string str = "";
-        for (int i = 0; i < order.Count; i++)
-        {
-            str += order[i] + ", ";
-        }
-        Debug.LogWarning(str);
-        str = "";
-        for (int i = 0; i < InstantiatedObjects.Count; i++)
-        {
-            str += InstantiatedObjects[i].gameObject + ", ";
-        }
-        Debug.LogWarning(str);
     }
 }
