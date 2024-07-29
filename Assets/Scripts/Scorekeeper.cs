@@ -44,4 +44,9 @@ public class Scorekeeper : MonoBehaviour
         Score = 0;
         PrintScore();
     }
+
+    public void LoseGame()
+    {
+        //GameObject.Find("FinalScore").GetComponent<TextMeshProUGUI>().text = "Score";
+    }
 }
