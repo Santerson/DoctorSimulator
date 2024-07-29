@@ -56,10 +56,33 @@ public class PlayerMovement : MonoBehaviour
         Vector2 inputVector = Vector2.zero;
 
         // Checking for player input on the keyboard
-        if (Input.GetKey(KeyCode.W)) { inputVector.y += 1; } // Up
-        if (Input.GetKey(KeyCode.A)) { inputVector.x -= 1; } // Left
-        if (Input.GetKey(KeyCode.S)) { inputVector.y -= 1; } // Down
-        if (Input.GetKey(KeyCode.D)) { inputVector.x += 1; } // Right
+        if (Input.GetKey(KeyCode.W)) 
+        { 
+            inputVector.y += 1;
+            animator.SetFloat("BackwardSpeed", Mathf.Abs(inputVector.y));
+        } // Up
+        else if (Input.GetKey(KeyCode.A)) 
+        { 
+            inputVector.x -= 1;
+            animator.SetFloat("LeftSpeed", Mathf.Abs(inputVector.x));
+        } // Left
+        else if (Input.GetKey(KeyCode.S)) 
+        { 
+            inputVector.y -= 1;
+            animator.SetFloat("forwardSpeed", Mathf.Abs(inputVector.y));
+        } // Down
+        else if (Input.GetKey(KeyCode.D)) 
+        {
+            inputVector.x += 1;
+            animator.SetFloat("RightSpeed", Mathf.Abs(inputVector.x));
+        } // Right
+        else
+        {
+            animator.SetFloat("forwardSpeed", 0);
+            animator.SetFloat("LeftSpeed", 0);
+            animator.SetFloat("RightSpeed", 0);
+            animator.SetFloat("BackwardSpeed", 0);
+        }
 
         //Sprint function
         if (Input.GetKey(KeyCode.LeftShift))
