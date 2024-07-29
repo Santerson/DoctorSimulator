@@ -16,8 +16,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float sprintSpeed = 4.5f;
 
     public float stamina = 100;
-    public float staminaDrain = 5f;
+    public float staminaDrain = 15f;
     public bool isSprinting;
+    public float staminaCooldown = 3f;
+    private float staminaDepletedTime = 0f;
 
     Rigidbody2D RefRigidbody = null;
     Animator animator;
@@ -83,7 +85,19 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerMaxMoveSpeed = 3.0f;
             PlayerAccelerationSpeed = 5.0f;
-            stamina += 10 * Time.deltaTime;
+            if (stamina == 0)
+            {
+                staminaDepletedTime += Time.deltaTime;
+                if (staminaDepletedTime >= staminaCooldown)
+                {
+                stamina += 10 * Time.deltaTime;
+                }
+            }
+            else
+            {
+                stamina += 10 * Time.deltaTime;
+                staminaDepletedTime = 0;
+            }
         }
         stamina = Mathf.Clamp(stamina, 0, 100);
 
