@@ -24,4 +24,8 @@ public class ButtonManager : MonoBehaviour
         FindObjectOfType<FinalScore>().deleteText();
         SceneManager.LoadScene("Start");
     }
+    public void GoToTips()
+    {
+        SceneManager.LoadScene("");
+    }
 }
