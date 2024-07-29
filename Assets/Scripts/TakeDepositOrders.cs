@@ -41,6 +41,8 @@ public class TakeDepositOrders : MonoBehaviour
         if (Impatience <= 0)
         {
             SceneManager.LoadScene("End");
+            FindObjectOfType<FinalScore>().GameLose();
+            FindObjectOfType<Scorekeeper>().LoseGame();
         }
     }
 

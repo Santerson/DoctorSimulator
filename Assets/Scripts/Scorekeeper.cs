@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Scorekeeper : MonoBehaviour
 {
-    int Score = 0;
+    public int Score = 0;
     [SerializeField] TextMeshProUGUI text;
     // Start is called before the first frame update
     void Start()
@@ -47,6 +47,7 @@ public class Scorekeeper : MonoBehaviour
 
     public void LoseGame()
     {
-        //GameObject.Find("FinalScore").GetComponent<TextMeshProUGUI>().text = "Score";
+        GameObject.Find("FinalScore").GetComponent<TextMeshProUGUI>().text = $"Score {Score}";
+        ResetScore();
     }
 }

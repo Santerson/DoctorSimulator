@@ -19,4 +19,9 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene("Start");
     }
+    public void GoToStartFromEnd()
+    {
+        FindObjectOfType<FinalScore>().deleteText();
+        SceneManager.LoadScene("Start");
+    }
 }
