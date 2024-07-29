@@ -400,7 +400,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 389313467}
-  - component: {fileID: 389313468}
   m_Layer: 0
   m_Name: PlayerChecker
   m_TagString: Untagged
@@ -423,22 +422,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1007923232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &389313468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 389313466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be3080924f0301946bf0612c01ee0d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BottomLeftCornerOfPickupArea: {x: 3.65, y: 0.5}
-  TopRightCornerOfPickupArea: {x: 10, y: -5}
-  AppearingItem: {fileID: 1263538538}
-  Orders: {fileID: 0}
 --- !u!1 &389683131
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,7 +975,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 904615499}
-  - component: {fileID: 904615500}
   m_Layer: 0
   m_Name: PlayerChecker
   m_TagString: Untagged
@@ -1015,22 +997,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 585894034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &904615500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904615498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be3080924f0301946bf0612c01ee0d0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BottomLeftCornerOfPickupArea: {x: -3.65, y: 0.5}
-  TopRightCornerOfPickupArea: {x: -10, y: -5}
-  AppearingItem: {fileID: 1263538538}
-  Orders: {fileID: 0}
 --- !u!1 &938678458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,11 +1302,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1263538538 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2792623734211848664, guid: b8ab619c2f5a411488b8edb1019a17e9, type: 3}
-  m_PrefabInstance: {fileID: 5386646967523856388}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1497113979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,6 +1481,7 @@ MonoBehaviour:
   stamina: 100
   staminaDrain: 20
   isSprinting: 0
+  staminaCooldown: 3
 --- !u!114 &1497113985
 MonoBehaviour:
   m_ObjectHideFlags: 0

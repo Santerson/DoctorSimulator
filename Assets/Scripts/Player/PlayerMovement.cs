@@ -41,8 +41,8 @@ public class PlayerMovement : MonoBehaviour
     {
         MovePlayer();
         float speed = RefRigidbody.velocity.magnitude;
-        Debug.Log(stamina);
-        Debug.Log(PlayerMaxMoveSpeed);
+        //Debug.Log(stamina);
+        //Debug.Log(PlayerMaxMoveSpeed);
     }
 
     void MovePlayer()
