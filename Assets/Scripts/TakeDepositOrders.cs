@@ -114,6 +114,7 @@ public class TakeDepositOrders : MonoBehaviour
     void CompletedOrder()
     {
         order.Clear();
+        FindObjectOfType<Scorekeeper>().AddScore();
         ClearInstantiatedObjects();
         OrderTaken = false;
         SpeechBubble.enabled = false;
