@@ -30,6 +30,6 @@ public class ButtonManager : MonoBehaviour
     public void GoToTips()
     {
 
-        SceneManager.LoadScene("Instructions");
+        SceneManager.LoadScene("Tips");
     }
 }
