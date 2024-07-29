@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -14,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float DampingCoefficient = 0.97f;
 
     [SerializeField] float sprintSpeed = 4.5f;
+
+    [SerializeField] TextMeshProUGUI SprintText;
 
     public float stamina = 100;
     public float staminaDrain = 15f;
@@ -123,5 +126,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Storing current position
         position = transform.position;
+
+        SprintText.text = $"Stamina: {stamina:#0.0}";
     }
 }

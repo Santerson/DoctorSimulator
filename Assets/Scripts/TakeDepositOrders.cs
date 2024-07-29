@@ -2,8 +2,11 @@ using JetBrains.Annotations;
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TakeDepositOrders : MonoBehaviour
 {
@@ -16,6 +19,9 @@ public class TakeDepositOrders : MonoBehaviour
     [SerializeField] SpriteRenderer SpeechBubble;
     public GameObject ObjectHolding;
     public bool OrderTaken = false;
+    [SerializeField] int BaseImpatience;
+    float Impatience;
+    [SerializeField] TextMeshProUGUI ImpatienceText;
 
     private void OnDrawGizmosSelected()
     {
@@ -25,10 +31,22 @@ public class TakeDepositOrders : MonoBehaviour
     private void Start()
     {
         SpeechBubble.enabled = false;
+        Impatience = BaseImpatience;
+    }
+
+    private void Update()
+    {
+        Impatience -= Time.deltaTime;
+        ImpatienceText.text = $"Patience {Impatience:#0.0}s";
+        if (Impatience <= 0)
+        {
+            SceneManager.LoadScene("End");
+        }
     }
 
     public void TakeOrder()
     {
+        Impatience += 5;
         OrderTaken = true;
         int rand = Random.Range(1, 4);
         for (int i = 0; i < rand; i++)
@@ -83,6 +101,7 @@ public class TakeDepositOrders : MonoBehaviour
 
     void GaveMedicine(int medicine)
     {
+        Impatience += 5;
         for (int i = 0; i < order.Count; i++)
         {
             if (order[i] == medicine)
@@ -113,6 +132,7 @@ public class TakeDepositOrders : MonoBehaviour
 
     void CompletedOrder()
     {
+        Impatience = BaseImpatience;
         order.Clear();
         FindObjectOfType<Scorekeeper>().AddScore();
         ClearInstantiatedObjects();
