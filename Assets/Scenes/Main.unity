@@ -7205,7 +7205,7 @@ MonoBehaviour:
   SpeechBubble: {fileID: 1148065613}
   ObjectHolding: {fileID: 0}
   OrderTaken: 0
-  BaseImpatience: 20
+  BaseImpatience: 999
   ImpatienceText: {fileID: 542398963}
 --- !u!1001 &1072760014
 PrefabInstance:
@@ -8347,7 +8347,7 @@ MonoBehaviour:
   sprintSpeed: 4.5
   SprintText: {fileID: 1770047460}
   stamina: 100
-  staminaDrain: 5
+  staminaDrain: 20
   isSprinting: 0
   staminaCooldown: 3
 --- !u!114 &1497113985
