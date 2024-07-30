@@ -7205,7 +7205,7 @@ MonoBehaviour:
   SpeechBubble: {fileID: 1148065613}
   ObjectHolding: {fileID: 0}
   OrderTaken: 0
-  BaseImpatience: 20
+  BaseImpatience: 999
   ImpatienceText: {fileID: 542398963}
 --- !u!1001 &1072760014
 PrefabInstance:
