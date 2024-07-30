@@ -61,22 +61,23 @@ public class PlayerMovement : MonoBehaviour
             inputVector.y += 1;
             animator.SetFloat("BackwardSpeed", Mathf.Abs(inputVector.y));
         } // Up
-        else if (Input.GetKey(KeyCode.A)) 
+        if (Input.GetKey(KeyCode.A)) 
         { 
             inputVector.x -= 1;
             animator.SetFloat("LeftSpeed", Mathf.Abs(inputVector.x));
         } // Left
-        else if (Input.GetKey(KeyCode.S)) 
+        if (Input.GetKey(KeyCode.S)) 
         { 
             inputVector.y -= 1;
             animator.SetFloat("forwardSpeed", Mathf.Abs(inputVector.y));
         } // Down
-        else if (Input.GetKey(KeyCode.D)) 
+        if (Input.GetKey(KeyCode.D)) 
         {
             inputVector.x += 1;
             animator.SetFloat("RightSpeed", Mathf.Abs(inputVector.x));
         } // Right
-        else
+
+        if (inputVector == Vector2.zero)
         {
             animator.SetFloat("forwardSpeed", 0);
             animator.SetFloat("LeftSpeed", 0);
@@ -131,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
         inputVector.Normalize();
 
         // Applying acceleration to move the player
-        RefRigidbody.AddForce(inputVector * PlayerAccelerationSpeed);
+        RefRigidbody.AddForce(inputVector * PlayerAccelerationSpeed * (Time.deltaTime * 1000));
 
         // Checking if the player is moving faster than their maximum movement speed
         if (RefRigidbody.velocity.magnitude > PlayerMaxMoveSpeed)
