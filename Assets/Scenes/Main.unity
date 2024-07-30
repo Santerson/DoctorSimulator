@@ -8347,7 +8347,7 @@ MonoBehaviour:
   sprintSpeed: 4.5
   SprintText: {fileID: 1770047460}
   stamina: 100
-  staminaDrain: 5
+  staminaDrain: 20
   isSprinting: 0
   staminaCooldown: 3
 --- !u!114 &1497113985
