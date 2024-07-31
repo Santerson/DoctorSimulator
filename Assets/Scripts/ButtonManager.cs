@@ -8,7 +8,11 @@ public class ButtonManager : MonoBehaviour
 
    public void GoToMainScene()
     {
-
+        try
+        {
+            FindObjectOfType<>
+        }
+        catch { }
         SceneManager.LoadScene("Main");
     }
     public void GoToCredits()
