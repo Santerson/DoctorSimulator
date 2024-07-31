@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -56,22 +57,22 @@ public class PlayerMovement : MonoBehaviour
         Vector2 inputVector = Vector2.zero;
 
         // Checking for player input on the keyboard
-        if (Input.GetKey(KeyCode.W)) 
-        { 
+        if (Input.GetKey(KeyCode.W))
+        {
             inputVector.y += 1;
             animator.SetFloat("BackwardSpeed", Mathf.Abs(inputVector.y));
         } // Up
-        if (Input.GetKey(KeyCode.A)) 
-        { 
+        if (Input.GetKey(KeyCode.A))
+        {
             inputVector.x -= 1;
             animator.SetFloat("LeftSpeed", Mathf.Abs(inputVector.x));
         } // Left
-        if (Input.GetKey(KeyCode.S)) 
-        { 
+        if (Input.GetKey(KeyCode.S))
+        {
             inputVector.y -= 1;
             animator.SetFloat("forwardSpeed", Mathf.Abs(inputVector.y));
         } // Down
-        if (Input.GetKey(KeyCode.D)) 
+        if (Input.GetKey(KeyCode.D))
         {
             inputVector.x += 1;
             animator.SetFloat("RightSpeed", Mathf.Abs(inputVector.x));
@@ -117,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
                 staminaDepletedTime += Time.deltaTime;
                 if (staminaDepletedTime >= staminaCooldown)
                 {
-                stamina += 10 * Time.deltaTime;
+                    stamina += 10 * Time.deltaTime;
                 }
             }
             else
@@ -151,6 +152,27 @@ public class PlayerMovement : MonoBehaviour
         // Storing current position
         position = transform.position;
 
-        SprintText.text = $"Stamina: {stamina:#0.0}";
+        if (stamina != 100)
+        {
+            Color textColor = Color.green;
+            if (stamina <= 0.3)
+            {
+                textColor = Color.black;
+            }
+            else if (stamina <= 25)
+            {
+                textColor = Color.red;
+            }
+            else if (stamina <= 50)
+            {
+                textColor = Color.yellow;
+            }
+            SprintText.color = textColor;
+            SprintText.text = $"Stamina: {stamina:#0.0}";
+        }
+        else 
+        {
+            SprintText.text = "";
+        }
     }
 }

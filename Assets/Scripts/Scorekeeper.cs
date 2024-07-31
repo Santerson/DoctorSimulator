@@ -36,7 +36,7 @@ public class Scorekeeper : MonoBehaviour
 
     void PrintScore()
     {
-        text.text = $"Score: {Score}";
+        text.text = $"Profit made: {Score}$";
     }
 
     public void ResetScore()
@@ -47,7 +47,7 @@ public class Scorekeeper : MonoBehaviour
 
     public void LoseGame()
     {
-        GameObject.Find("FinalScore").GetComponent<TextMeshProUGUI>().text = $"Score {Score}";
+        GameObject.Find("FinalScore").GetComponent<TextMeshProUGUI>().text = $"Total Profit: {Score}$";
         ResetScore();
     }
 }

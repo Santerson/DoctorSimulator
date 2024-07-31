@@ -28,28 +28,9 @@ public class PlayerCloseTo : MonoBehaviour
     {
         
         Vector2 playerPos = FindObjectOfType<PlayerMovement>().transform.position;
-        //Debug.Log(playerPos);
-        if (playerPos.x > BottomLeftCornerOfPickupArea.x &&
-            playerPos.x < TopRightCornerOfPickupArea.x &&
-            playerPos.y < BottomLeftCornerOfPickupArea.y &&
-            playerPos.y > TopRightCornerOfPickupArea.y &&
-            !Orders.GetComponent<TakeDepositOrders>().OrderTaken)
-        {
-            //Debug.Log("Appearing");
-            AppearingItem.SetText("Press Space to take order");
-        }
-        else
-        {
-            //Debug.Log("Disappearing");
-            AppearingItem.SetText("");
-        }
+        AppearingItem.SetText("");
 
-        if (playerPos.x > BottomLeftCornerOfPickupArea.x &&
-            playerPos.x < TopRightCornerOfPickupArea.x &&
-            playerPos.y < BottomLeftCornerOfPickupArea.y &&
-            playerPos.y > TopRightCornerOfPickupArea.y &&
-            !Orders.GetComponent<TakeDepositOrders>().OrderTaken &&
-            Input.GetKeyDown(KeyCode.Space))
+        if (!FindObjectOfType<TakeDepositOrders>().OrderTaken)
         {
             FindObjectOfType<TakeDepositOrders>().TakeOrder();
         }
