@@ -40,7 +40,7 @@ public class Scorekeeper : MonoBehaviour
         {
             text = GameObject.Find("ScoreTMP").gameObject.GetComponent<TextMeshProUGUI>();
         }
-        text.text = $"Profit made: {Score}$";
+        text.text = $"PROFIT MADE: {Score}$";
     }
 
     public void ResetScore()

@@ -60,7 +60,7 @@ public class PickupableObjects : MonoBehaviour
 
     private void CarriedByPlayer()
     {
-        GetComponent<SpriteRenderer>().sortingOrder = 1;
+        GetComponent<SpriteRenderer>().sortingOrder = 2;
         transform.position = new Vector2(Player.transform.position.x - 0.05f, Player.transform.position.y - 0.3f);
     }
 
@@ -85,7 +85,7 @@ public class PickupableObjects : MonoBehaviour
         {
             return;
         }
-        text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - 0.01f);
+        text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a - (Time.deltaTime * 3f));
 
     }
 
@@ -95,7 +95,7 @@ public class PickupableObjects : MonoBehaviour
         {
             return;
         }
-        text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a + 0.01f);
+        text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a + (Time.deltaTime * 3f));
 
     }
 }
