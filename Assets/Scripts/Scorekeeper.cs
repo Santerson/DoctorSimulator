@@ -36,6 +36,10 @@ public class Scorekeeper : MonoBehaviour
 
     void PrintScore()
     {
+        if (text == null)
+        {
+            text = GameObject.Find("ScoreTMP").gameObject.GetComponent<TextMeshProUGUI>();
+        }
         text.text = $"Profit made: {Score}$";
     }
 
