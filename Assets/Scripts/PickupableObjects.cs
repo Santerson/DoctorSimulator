@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class PickupableObjects : MonoBehaviour
@@ -51,10 +52,15 @@ public class PickupableObjects : MonoBehaviour
         {
             CarriedByPlayer();
         }
+        else
+        {
+            GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }
     }
 
     private void CarriedByPlayer()
     {
+        GetComponent<SpriteRenderer>().sortingOrder = 1;
         transform.position = new Vector2(Player.transform.position.x - 0.05f, Player.transform.position.y - 0.3f);
     }
 

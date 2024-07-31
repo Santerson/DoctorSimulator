@@ -36,7 +36,7 @@ public class TakeDepositOrders : MonoBehaviour
     private void Update()
     {
         Impatience -= Time.deltaTime;
-        ImpatienceText.text = $"Patience {Impatience:#0.0}s";
+        ImpatienceText.text = $"Day Left: {Impatience:#0.0}s";
         if (Impatience <= 0)
         {
             SceneManager.LoadScene("End");
@@ -47,7 +47,6 @@ public class TakeDepositOrders : MonoBehaviour
 
     public void TakeOrder()
     {
-        Impatience += 5;
         OrderTaken = true;
         int rand = Random.Range(1, 4);
         for (int i = 0; i < rand; i++)
@@ -82,6 +81,11 @@ public class TakeDepositOrders : MonoBehaviour
     public void CheckGivenMedicine(int medicine)
     {
         bool isInOrder = false;
+        if (order.Count <= 0)
+        {
+            CompletedOrder();
+            return;
+        }
         foreach (int item in order)
         {
             if (item == medicine) isInOrder = true;
@@ -102,7 +106,6 @@ public class TakeDepositOrders : MonoBehaviour
 
     void GaveMedicine(int medicine)
     {
-        Impatience += 5;
         for (int i = 0; i < order.Count; i++)
         {
             if (order[i] == medicine)
@@ -133,7 +136,6 @@ public class TakeDepositOrders : MonoBehaviour
 
     void CompletedOrder()
     {
-        Impatience = BaseImpatience;
         order.Clear();
         FindObjectOfType<Scorekeeper>().AddScore();
         ClearInstantiatedObjects();
