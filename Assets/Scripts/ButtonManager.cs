@@ -32,4 +32,8 @@ public class ButtonManager : MonoBehaviour
 
         SceneManager.LoadScene("Tips");
     }
+    public void QuitToDesktop()
+    {
+        Application.Quit();
+    }
 }
