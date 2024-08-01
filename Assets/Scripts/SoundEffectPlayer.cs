@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class SoundEffectPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] AudioSource ButtonClick;
+    public void PlayClickSound()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ButtonClick.Play();
     }
 }
