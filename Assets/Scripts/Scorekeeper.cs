@@ -35,10 +35,14 @@ public class Scorekeeper : MonoBehaviour
             }
             catch
             {
-                //If game over while text is green
-                text.fontSize = 22;
-                text.color = Color.white;
-                GreenTimeLeft = 0;
+                try
+                {
+                    //If game over while text is green
+                    text.fontSize = 22;
+                    text.color = Color.white;
+                    GreenTimeLeft = 0;
+                }
+                catch { }
             }
         }
     }

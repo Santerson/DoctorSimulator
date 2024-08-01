@@ -7,6 +7,8 @@ public class Pause : MonoBehaviour
 {
     public bool GamePaused = false;
     Vector2 Position;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +18,7 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!FindObjectOfType<TakeDepositOrders>().GameStarted) return;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!GamePaused)
@@ -29,15 +32,16 @@ public class Pause : MonoBehaviour
         }
     }
 
-
     public void PauseGame()
     {
+        if (!FindObjectOfType<TakeDepositOrders>().GameStarted) return;
         GamePaused = true;
         transform.position = Vector2.zero;
     }
 
     public void PauseButton()
     {
+        if (!FindObjectOfType<TakeDepositOrders>().GameStarted) return;
         try
         {
             FindObjectOfType<SoundEffectPlayer>().PlayClickSound();
@@ -48,12 +52,14 @@ public class Pause : MonoBehaviour
 
     public void ResumeGame()
     {
+        if (!FindObjectOfType<TakeDepositOrders>().GameStarted) return;
         GamePaused = false;
         transform.position = Position;
     }
 
     public void ResumeButton()
     {
+        if (!FindObjectOfType<TakeDepositOrders>().GameStarted) return;
         try
         {
             FindObjectOfType<SoundEffectPlayer>().PlayClickSound();

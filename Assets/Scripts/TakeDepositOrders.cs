@@ -23,6 +23,11 @@ public class TakeDepositOrders : MonoBehaviour
     float Impatience;
     [SerializeField] TextMeshProUGUI ImpatienceText;
 
+    float PreGameTime = 3.5f;
+    public bool GameStarted = false;
+    [SerializeField] TextMeshProUGUI PreGameCountDown;
+    [SerializeField] TextMeshProUGUI PreGameCountDownDecor;
+
     private void OnDrawGizmosSelected()
     {
         DebugExtensions.DrawBox(MedPosition, new Vector2(MedPosition.x + 0.3f, MedPosition.y + 0.3f), Color.green);
@@ -32,12 +37,42 @@ public class TakeDepositOrders : MonoBehaviour
     {
         SpeechBubble.enabled = false;
         Impatience = BaseImpatience;
+        ImpatienceText.text = $"DAY LEFT: {Impatience:#0.0}s";
     }
 
     private void Update()
     {
-        if (!FindObjectOfType<Pause>().GamePaused) 
-        Impatience -= Time.deltaTime;
+        if (PreGameTime > 0.5)
+        {
+            PreGameTime -= Time.deltaTime;
+            PreGameCountDown.text = $"{PreGameTime:#0}";
+            FindObjectOfType<Pause>().GamePaused = true;
+            if (SUtilities.IsInRange(PreGameTime, 1.5f, 1.6f))
+            {
+                try
+                {
+                    FindObjectOfType<SoundEffectPlayer>().PlayTick();
+                }
+                catch { Debug.LogError("Play from start screen for sound effects"); }
+            }
+            if (SUtilities.IsInRange(PreGameTime, 2.5f, 2.6f))
+            {
+                try
+                {
+                    FindObjectOfType<SoundEffectPlayer>().PlayTick();
+                }
+                catch { Debug.LogError("Play from start screen for sound effects"); }
+            }
+            return;
+        }
+        else if (!GameStarted)
+        {
+            FindObjectOfType<Pause>().GamePaused = false;
+            GameStarted = true;
+            Destroy(PreGameCountDown);
+            Destroy(PreGameCountDownDecor);
+        }
+        if (!FindObjectOfType<Pause>().GamePaused) Impatience -= Time.deltaTime;
         ImpatienceText.text = $"DAY LEFT: {Impatience:#0.0}s";
         if (Impatience <= 0)
         {
