@@ -15,10 +15,12 @@ public class PickupableObjects : MonoBehaviour
     [SerializeField] ParticleSystem NearParticles;
     GameObject Player;
     public bool BeingHeld = false;
+    SpriteRenderer RefRenderer;
 
     private void Awake()
     {
         Player = FindObjectOfType<PlayerMovement>().gameObject;
+        RefRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Start is called before the first frame update
@@ -78,8 +80,27 @@ public class PickupableObjects : MonoBehaviour
 
     private void CarriedByPlayer()
     {
-        GetComponent<SpriteRenderer>().sortingOrder = 2;
-        transform.position = new Vector2(Player.transform.position.x - 0.05f, Player.transform.position.y - 0.3f);
+        float PlayerMovingDir = FindObjectOfType<PlayerMovement>().Direction;
+        if (PlayerMovingDir == 1)
+        {
+            RefRenderer.sortingOrder = 0;
+            transform.position = new Vector2(Player.transform.position.x - 0.05f, Player.transform.position.y - 0.3f);
+        }
+        else if (PlayerMovingDir == 2)
+        {
+            RefRenderer.sortingOrder = 2;
+            transform.position = new Vector2(Player.transform.position.x - 0.4f, Player.transform.position.y - 0.3f);
+        }
+        else if (PlayerMovingDir == 3)
+        {
+            RefRenderer.sortingOrder = 2;
+            transform.position = new Vector2(Player.transform.position.x - 0.02f, Player.transform.position.y - 0.3f);
+        }
+        else if (PlayerMovingDir == 4)
+        {
+            RefRenderer.sortingOrder = 2;
+            transform.position = new Vector2(Player.transform.position.x + 0.4f, Player.transform.position.y - 0.3f);
+        }
     }
 
     /// <summary>

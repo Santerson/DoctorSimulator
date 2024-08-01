@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     public float staminaCooldown = 3f;
     private float staminaDepletedTime = 0f;
 
+    public float Direction = 3;
+
     Rigidbody2D RefRigidbody = null;
     Animator animator;
 
@@ -59,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         // Checking for player input on the keyboard
         if (Input.GetKey(KeyCode.A))
         {
+            Direction = 2;
             inputVector.x -= 1;
             animator.SetFloat("LeftSpeed", Mathf.Abs(inputVector.x));
             animator.SetFloat("forwardSpeed", 0);
@@ -67,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         } // Left
         if (Input.GetKey(KeyCode.D))
         {
+            Direction = 4;
             inputVector.x += 1;
             animator.SetFloat("RightSpeed", Mathf.Abs(inputVector.x));
             animator.SetFloat("forwardSpeed", 0);
@@ -75,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
         } // Right
         if (Input.GetKey(KeyCode.S))
         {
+            Direction = 3;
             inputVector.y -= 1;
             animator.SetFloat("forwardSpeed", Mathf.Abs(inputVector.y));
             animator.SetFloat("LeftSpeed", 0);
@@ -83,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
         } // Down
         if (Input.GetKey(KeyCode.W))
         {
+            Direction = 1;
             inputVector.y += 1;
             animator.SetFloat("BackwardSpeed", Mathf.Abs(inputVector.y));
             animator.SetFloat("forwardSpeed", 0);
@@ -92,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (inputVector == Vector2.zero)
         {
+            Direction = 3;
             animator.SetFloat("forwardSpeed", 0);
             animator.SetFloat("LeftSpeed", 0);
             animator.SetFloat("RightSpeed", 0);
