@@ -20,24 +20,24 @@ public class Pause : MonoBehaviour
         {
             if (!GamePaused)
             {
-                GamePaused = true;
                 PauseGame();
             }
             else
             {
-                GamePaused = false;
                 ResumeGame();
             }
         }
     }
 
 
-    private void PauseGame()
+    public void PauseGame()
     {
+        GamePaused = true;
         transform.position = Vector2.zero;
     }
-    private void ResumeGame()
+    public void ResumeGame()
     {
+        GamePaused = false;
         transform.position = Position;
     }
 }

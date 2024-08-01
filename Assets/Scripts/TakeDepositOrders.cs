@@ -277,4 +277,14 @@ public class TakeDepositOrders : MonoBehaviour
             ImpatienceText.color = Color.white;
         }
     }
+
+    public void KILL()
+    {
+        try
+        {
+            FindObjectOfType<SoundEffectPlayer>().PlayClickSound();
+        }
+        catch { Debug.LogError("Play from start screen for sound effects"); }
+        Impatience = 0;
+    }
 }
