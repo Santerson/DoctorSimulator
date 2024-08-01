@@ -10,6 +10,7 @@ public class SoundEffectPlayer : MonoBehaviour
     [SerializeField] AudioSource TakingMed;
     [SerializeField] AudioSource RightMed;
     [SerializeField] AudioSource WrongMed;
+    [SerializeField] AudioSource Tick;
 
     [SerializeField] AudioSource MenuMusic;
     [SerializeField] AudioSource GameplayMusic;
@@ -37,6 +38,10 @@ public class SoundEffectPlayer : MonoBehaviour
     public void PlayWrongMed()
     {
         WrongMed.Play();
+    }
+    public void PlayTick()
+    {
+        Tick.Play();
     }
 
     //LOOPING TRACKS

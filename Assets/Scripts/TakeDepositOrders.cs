@@ -49,7 +49,11 @@ public class TakeDepositOrders : MonoBehaviour
             catch { Debug.LogError("Play from start screen for sound effects"); }
             FindObjectOfType<FinalScore>().GameLose();
             FindObjectOfType<Scorekeeper>().LoseGame();
+        
         }
+        CheckForTimerTick();
+        
+
     }
 
     public void TakeOrder()
@@ -162,5 +166,89 @@ public class TakeDepositOrders : MonoBehaviour
             Destroy(obj);
         }
         InstantiatedObjects.Clear();
+    }
+
+    void CheckForTimerTick()
+    {
+        if (SUtilities.IsInRange(Impatience, 1f, 1.1f))
+        {
+            try
+            {
+                FindObjectOfType<SoundEffectPlayer>().PlayTick();
+            }
+            catch { Debug.LogError("Play from start screen for sound effects"); }
+        }
+        else if (SUtilities.IsInRange(Impatience, 2f, 2.1f))
+        {
+            try
+            {
+                FindObjectOfType<SoundEffectPlayer>().PlayTick();
+            }
+            catch { Debug.LogError("Play from start screen for sound effects"); }
+        }
+        else if (SUtilities.IsInRange(Impatience, 3f, 3.1f))
+        {
+            try
+            {
+                FindObjectOfType<SoundEffectPlayer>().PlayTick();
+            }
+            catch { Debug.LogError("Play from start screen for sound effects"); }
+        }
+        else if (SUtilities.IsInRange(Impatience, 4f, 4.1f))
+        {
+            try
+            {
+                FindObjectOfType<SoundEffectPlayer>().PlayTick();
+            }
+            catch { Debug.LogError("Play from start screen for sound effects"); }
+        }
+        else if (SUtilities.IsInRange(Impatience, 5f, 5.1f))
+        {
+            try
+            {
+                FindObjectOfType<SoundEffectPlayer>().PlayTick();
+            }
+            catch { Debug.LogError("Play from start screen for sound effects"); }
+        }
+        else if (SUtilities.IsInRange(Impatience, 6f, 6.1f))
+        {
+            try
+            {
+                FindObjectOfType<SoundEffectPlayer>().PlayTick();
+            }
+            catch { Debug.LogError("Play from start screen for sound effects"); }
+        }
+        else if (SUtilities.IsInRange(Impatience, 7f, 7.1f))
+        {
+            try
+            {
+                FindObjectOfType<SoundEffectPlayer>().PlayTick();
+            }
+            catch { Debug.LogError("Play from start screen for sound effects"); }
+        }
+        else if (SUtilities.IsInRange(Impatience, 8f, 8.1f))
+        {
+            try
+            {
+                FindObjectOfType<SoundEffectPlayer>().PlayTick();
+            }
+            catch { Debug.LogError("Play from start screen for sound effects"); }
+        }
+        else if (SUtilities.IsInRange(Impatience, 9f, 9.1f))
+        {
+            try
+            {
+                FindObjectOfType<SoundEffectPlayer>().PlayTick();
+            }
+            catch { Debug.LogError("Play from start screen for sound effects"); }
+        }
+        else if (SUtilities.IsInRange(Impatience, 10f, 10.1f))
+        {
+            try
+            {
+                FindObjectOfType<SoundEffectPlayer>().PlayTick();
+            }
+            catch { Debug.LogError("Play from start screen for sound effects"); }
+        }
     }
 }

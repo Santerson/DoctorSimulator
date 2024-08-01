@@ -15,4 +15,16 @@ public static class SUtilities
     {
         return (position.x >= bottomLeft.x && position.x <= topRight.x && position.y >= bottomLeft.y && position.y <= topRight.y);
     }
+
+    /// <summary>
+    /// Checks if a float is in a range (inclusvie)
+    /// </summary>
+    /// <param name="checking">The float to be checked</param>
+    /// <param name="low">The float the number must be greter than or equal to</param>
+    /// <param name="high">The float the number must be less than or equal to</param>
+    /// <returns></returns>
+   public static bool IsInRange(float checking, float low, float high)
+    {
+        return checking >= low && checking <= high;
+    }
 }
