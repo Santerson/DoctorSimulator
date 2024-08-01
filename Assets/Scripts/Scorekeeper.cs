@@ -7,17 +7,33 @@ public class Scorekeeper : MonoBehaviour
 {
     public int Score = 0;
     [SerializeField] TextMeshProUGUI text;
+    private float TextTimeGreen = 1.0f;
+    private float GreenTimeLeft;
     // Start is called before the first frame update
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (GreenTimeLeft > 0)
+        {
+            GreenTimeLeft -= Time.deltaTime;
+            text.fontSize = 26;
+            text.color = Color.green;
+        }
+        else
+        {
+            if (text.color != Color.white)
+            {
+                text.fontSize = 22;
+                text.color = Color.white;
+            }
+        }
     }
 
     public void AddScore(int score)
     {
         this.Score += score;
+        GreenTimeLeft = TextTimeGreen;
         PrintScore();
     }
 

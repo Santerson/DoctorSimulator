@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -177,6 +178,7 @@ public class TakeDepositOrders : MonoBehaviour
                 FindObjectOfType<SoundEffectPlayer>().PlayTick();
             }
             catch { Debug.LogError("Play from start screen for sound effects"); }
+            ImpatienceText.color = new Color(0.5f, 0, 0);
         }
         else if (SUtilities.IsInRange(Impatience, 2f, 2.1f))
         {
@@ -185,6 +187,7 @@ public class TakeDepositOrders : MonoBehaviour
                 FindObjectOfType<SoundEffectPlayer>().PlayTick();
             }
             catch { Debug.LogError("Play from start screen for sound effects"); }
+            ImpatienceText.color = new Color(0.5f, 0, 0);
         }
         else if (SUtilities.IsInRange(Impatience, 3f, 3.1f))
         {
@@ -193,6 +196,7 @@ public class TakeDepositOrders : MonoBehaviour
                 FindObjectOfType<SoundEffectPlayer>().PlayTick();
             }
             catch { Debug.LogError("Play from start screen for sound effects"); }
+            ImpatienceText.color = new Color(0.5f, 0, 0);
         }
         else if (SUtilities.IsInRange(Impatience, 4f, 4.1f))
         {
@@ -201,6 +205,7 @@ public class TakeDepositOrders : MonoBehaviour
                 FindObjectOfType<SoundEffectPlayer>().PlayTick();
             }
             catch { Debug.LogError("Play from start screen for sound effects"); }
+            ImpatienceText.color = new Color(0.5f, 0, 0);
         }
         else if (SUtilities.IsInRange(Impatience, 5f, 5.1f))
         {
@@ -209,6 +214,7 @@ public class TakeDepositOrders : MonoBehaviour
                 FindObjectOfType<SoundEffectPlayer>().PlayTick();
             }
             catch { Debug.LogError("Play from start screen for sound effects"); }
+            ImpatienceText.color = new Color(0.5f, 0, 0);
         }
         else if (SUtilities.IsInRange(Impatience, 6f, 6.1f))
         {
@@ -217,6 +223,7 @@ public class TakeDepositOrders : MonoBehaviour
                 FindObjectOfType<SoundEffectPlayer>().PlayTick();
             }
             catch { Debug.LogError("Play from start screen for sound effects"); }
+            ImpatienceText.color = new Color(0.5f, 0, 0);
         }
         else if (SUtilities.IsInRange(Impatience, 7f, 7.1f))
         {
@@ -225,6 +232,7 @@ public class TakeDepositOrders : MonoBehaviour
                 FindObjectOfType<SoundEffectPlayer>().PlayTick();
             }
             catch { Debug.LogError("Play from start screen for sound effects"); }
+            ImpatienceText.color = new Color(0.5f, 0, 0);
         }
         else if (SUtilities.IsInRange(Impatience, 8f, 8.1f))
         {
@@ -233,6 +241,7 @@ public class TakeDepositOrders : MonoBehaviour
                 FindObjectOfType<SoundEffectPlayer>().PlayTick();
             }
             catch { Debug.LogError("Play from start screen for sound effects"); }
+            ImpatienceText.color = new Color(0.5f, 0, 0);
         }
         else if (SUtilities.IsInRange(Impatience, 9f, 9.1f))
         {
@@ -241,6 +250,7 @@ public class TakeDepositOrders : MonoBehaviour
                 FindObjectOfType<SoundEffectPlayer>().PlayTick();
             }
             catch { Debug.LogError("Play from start screen for sound effects"); }
+            ImpatienceText.color = new Color(0.5f, 0, 0);
         }
         else if (SUtilities.IsInRange(Impatience, 10f, 10.1f))
         {
@@ -249,6 +259,21 @@ public class TakeDepositOrders : MonoBehaviour
                 FindObjectOfType<SoundEffectPlayer>().PlayTick();
             }
             catch { Debug.LogError("Play from start screen for sound effects"); }
+            ImpatienceText.color = new Color(0.5f, 0, 0);
+            ImpatienceText.fontSize = 30;
+        }
+        else if (Impatience < 10)
+        {
+            ImpatienceText.color = Color.red;
+        }
+        else if (Impatience < 20)
+        {
+            ImpatienceText.color = Color.yellow;
+        }
+        else
+        {
+            ImpatienceText.fontSize = 22;
+            ImpatienceText.color = Color.white;
         }
     }
 }

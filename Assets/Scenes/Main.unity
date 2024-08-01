@@ -7025,7 +7025,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5868721371567194592, guid: 0f37ad83664460c428e735d1027eca4e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 6.0185
+      value: 5.929
       objectReference: {fileID: 0}
     - target: {fileID: 5868721371567194592, guid: 0f37ad83664460c428e735d1027eca4e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7801,7 +7801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5868721371567194592, guid: 0f37ad83664460c428e735d1027eca4e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 6.0164
+      value: 5.9269
       objectReference: {fileID: 0}
     - target: {fileID: 5868721371567194592, guid: 0f37ad83664460c428e735d1027eca4e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8541,7 +8541,7 @@ MonoBehaviour:
   SpeechBubble: {fileID: 1079206601}
   ObjectHolding: {fileID: 0}
   OrderTaken: 0
-  BaseImpatience: 60
+  BaseImpatience: 30
   ImpatienceText: {fileID: 1270492187}
 --- !u!212 &2093989859
 SpriteRenderer:
