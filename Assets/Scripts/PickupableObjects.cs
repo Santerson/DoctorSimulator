@@ -12,6 +12,7 @@ public class PickupableObjects : MonoBehaviour
     [SerializeField] Vector2 DetectionTopRight;
     Vector2 Position;
     [SerializeField] TextMeshProUGUI text;
+    [SerializeField] ParticleSystem NearParticles;
     GameObject Player;
     public bool BeingHeld = false;
 
@@ -36,8 +37,18 @@ public class PickupableObjects : MonoBehaviour
     void Update()
     {
         Vector2 playerPos = FindObjectOfType<PlayerMovement>().transform.position;
-        if (!FindObjectOfType<Pickup>().Holding && SUtilities.IsInRange(playerPos, DetectionBottomLeft, DetectionTopRight)) FadeIn();
-        else { FadeOut(); }
+        if (!FindObjectOfType<Pickup>().Holding && SUtilities.IsInRange(playerPos, DetectionBottomLeft, DetectionTopRight))
+        {
+            FadeIn();
+            if (!NearParticles.isPlaying) NearParticles.Play();
+        }
+        else { 
+            FadeOut();
+            if (NearParticles.isPlaying)
+            {
+                NearParticles.Stop();
+            }
+        }
         if (SUtilities.IsInRange(playerPos, DetectionBottomLeft, DetectionTopRight))
         {
             if (!FindObjectOfType<Pickup>().Holding && Input.GetKey(KeyCode.Space))
@@ -46,6 +57,8 @@ public class PickupableObjects : MonoBehaviour
                 BeingHeld = true;
                 text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
                 FindObjectOfType<TakeDepositOrders>().ObjectHolding = gameObject;
+                NearParticles.Stop();
+                NearParticles.Clear();
                 try
                 {
                     FindObjectOfType<SoundEffectPlayer>().PlayTakingMed();

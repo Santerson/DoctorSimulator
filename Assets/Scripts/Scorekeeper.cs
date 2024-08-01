@@ -14,18 +14,31 @@ public class Scorekeeper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GreenTimeLeft > 0)
+        if (!(GreenTimeLeft == 0))
         {
-            GreenTimeLeft -= Time.deltaTime;
-            text.fontSize = 26;
-            text.color = Color.green;
-        }
-        else
-        {
-            if (text.color != Color.white)
+            try
             {
+                if (GreenTimeLeft > 0)
+                {
+                    GreenTimeLeft -= Time.deltaTime;
+                    text.fontSize = 26;
+                    text.color = Color.green;
+                }
+                else
+                {
+                    if (text.color != Color.white)
+                    {
+                        text.fontSize = 22;
+                        text.color = Color.white;
+                    }
+                }
+            }
+            catch
+            {
+                //If game over while text is green
                 text.fontSize = 22;
                 text.color = Color.white;
+                GreenTimeLeft = 0;
             }
         }
     }
