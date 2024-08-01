@@ -62,4 +62,8 @@ public class SoundEffectPlayer : MonoBehaviour
     {
         GameplayMusic.Stop();
     }
+    public void PauseGameplayMusic()
+    {
+        GameplayMusic.Pause();
+    }
 }

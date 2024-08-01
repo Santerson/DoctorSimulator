@@ -51,4 +51,14 @@ public class Pause : MonoBehaviour
         GamePaused = false;
         transform.position = Position;
     }
+
+    public void ResumeButton()
+    {
+        try
+        {
+            FindObjectOfType<SoundEffectPlayer>().PlayClickSound();
+        }
+        catch { Debug.LogError("Play from the start for sound effects!"); }
+        ResumeGame();
+    }
 }
