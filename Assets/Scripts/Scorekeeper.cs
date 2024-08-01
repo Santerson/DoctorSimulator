@@ -8,14 +8,6 @@ public class Scorekeeper : MonoBehaviour
     public int Score = 0;
     [SerializeField] TextMeshProUGUI text;
     // Start is called before the first frame update
-    void Start()
-    {
-        if (text == null)
-        {
-            Debug.LogError("No text attached!");
-        }
-        PrintScore();
-    }
 
     // Update is called once per frame
     void Update()
@@ -34,7 +26,7 @@ public class Scorekeeper : MonoBehaviour
         AddScore(100);
     }
 
-    void PrintScore()
+    public void PrintScore()
     {
         if (text == null)
         {

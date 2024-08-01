@@ -34,6 +34,11 @@ public class TrashCan : MonoBehaviour
                 TrashParticles.Play();
                 FindObjectOfType<Pickup>().Holding = false;
                 FindObjectOfType<TakeDepositOrders>().ObjectHolding.GetComponent<PickupableObjects>().DropByPlayer();
+                try
+                {
+                    FindObjectOfType<SoundEffectPlayer>().PlayGrabbing();
+                }
+                catch { Debug.LogError("Play from start scene for soundeffects!"); }
             }
         }
     }
