@@ -40,9 +40,10 @@ public class ButtonManager : MonoBehaviour
         try
         {
             FindObjectOfType<SoundEffectPlayer>().PlayClickSound();
+            FindObjectOfType<FinalScore>().deleteText();
         }
         catch { Debug.LogError("Play from start scene for audio"); }
-        FindObjectOfType<FinalScore>().deleteText();
+        
         SceneManager.LoadScene("Start");
     }
     public void GoToTips()

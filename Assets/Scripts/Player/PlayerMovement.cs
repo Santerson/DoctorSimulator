@@ -52,6 +52,14 @@ public class PlayerMovement : MonoBehaviour
             //Debug.Log(stamina);
             //Debug.Log(PlayerMaxMoveSpeed);
         }
+        else
+        {
+            animator.SetFloat("forwardSpeed", 0);
+            animator.SetFloat("LeftSpeed", 0);
+            animator.SetFloat("RightSpeed", 0);
+            animator.SetFloat("BackwardSpeed", 0);
+            RefRigidbody.velocity = Vector2.zero;
+        }
     }
 
     void MovePlayer()
