@@ -99,13 +99,18 @@ public class TakeDepositOrders : MonoBehaviour
             }
         }
         else
-        {
+        { 
             FindObjectOfType<PlayerCloseTo>().AppearingItem.text = "Not on the order!";
         }
     }
 
     void GaveMedicine(int medicine)
     {
+        try
+        {
+            FindObjectOfType<SoundEffectPlayer>().PlayRightMed();
+        }
+        catch { Debug.LogError("Play from start scene for soundeffects!"); }
         for (int i = 0; i < order.Count; i++)
         {
             if (order[i] == medicine)

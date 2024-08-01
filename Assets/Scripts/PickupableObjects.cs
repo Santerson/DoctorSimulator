@@ -46,6 +46,11 @@ public class PickupableObjects : MonoBehaviour
                 BeingHeld = true;
                 text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
                 FindObjectOfType<TakeDepositOrders>().ObjectHolding = gameObject;
+                try
+                {
+                    FindObjectOfType<SoundEffectPlayer>().PlayTakingMed();
+                }
+                catch { Debug.LogError("Play from start scene for soundeffects!"); }
             }
         }
         if (BeingHeld)
