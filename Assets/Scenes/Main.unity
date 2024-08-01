@@ -21991,6 +21991,7 @@ MonoBehaviour:
   staminaDrain: 20
   isSprinting: 0
   staminaCooldown: 3
+  Direction: 3
 --- !u!114 &1712557913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22251,7 +22252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2596403957403586122, guid: 0f37ad83664460c428e735d1027eca4e, type: 3}
       propertyPath: m_margin.z
-      value: -51.28752
+      value: -81.35475
       objectReference: {fileID: 0}
     - target: {fileID: 2596403957403586122, guid: 0f37ad83664460c428e735d1027eca4e, type: 3}
       propertyPath: m_fontSizeBase
@@ -22261,6 +22262,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+    - target: {fileID: 2596403957403586122, guid: 0f37ad83664460c428e735d1027eca4e, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2878186324734781203, guid: 0f37ad83664460c428e735d1027eca4e, type: 3}
       propertyPath: m_Name
       value: ScoreText

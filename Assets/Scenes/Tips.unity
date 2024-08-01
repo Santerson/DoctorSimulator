@@ -223,17 +223,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Home
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4293525248
+  m_fontColor: {r: 0, g: 1, b: 0.91372555, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -450,7 +450,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &980369245
 Canvas:
   m_ObjectHideFlags: 0
@@ -460,7 +460,7 @@ Canvas:
   m_GameObject: {fileID: 980369242}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -483,7 +483,7 @@ RectTransform:
   m_GameObject: {fileID: 980369242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.0216781, y: 0.0216781, z: 0.0216781}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1325503132}
@@ -493,9 +493,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.53, y: 0.28}
+  m_SizeDelta: {x: 1703, y: 958}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1047355097
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +592,7 @@ RectTransform:
   m_GameObject: {fileID: 1085564494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8485, y: 1.8485, z: 1.8485}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 452005881}
@@ -679,8 +679,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 4e22aeb33e85a904ea35f87db6f120ab, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -949,7 +949,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -121, y: 105}
+  m_AnchoredPosition: {x: -108.5, y: 105}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5000002}
 --- !u!114 &1325503133
@@ -972,19 +972,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Your goal is to make as many orders in order to make as much money as
-    you can before the end of your shift.
+  m_text: 'Your goal is to make as many orders to make as much money as you can before
+    the end of your shift.
 
 
-    A nurse will give you an order of
-    a random amount of pills. These pills can be found throughout the pharmacy. Press
-    SPACE to pick up the pills, then  deliver them to their nurse. Watch out though,
-    you can only carry one medicine at once. If you pick up a medicine that is not
-    on the order, you can trash it at the garbage can found at the top left of the
-    pharmacy.
+    A nurse will give you an order of a random assortment
+    of pills. These pills can be found throughout the pharmacy. Press SPACE to pick
+    up the pills, then deliver them to their nurse. Watch out though, you can only
+    carry one pill at once. If you pick up a medicine that is not on the order, you
+    can trash it at the garbage can found at the top left of the pharmacy.
 
 
-    Use WASD to walk. Press and hold LEFT SHIFT to use sprint.
+    Use
+    WASD to walk. Press and hold LEFT SHIFT to use sprint.
 
 
 '
