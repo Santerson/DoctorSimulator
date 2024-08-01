@@ -61,21 +61,33 @@ public class PlayerMovement : MonoBehaviour
         {
             inputVector.x -= 1;
             animator.SetFloat("LeftSpeed", Mathf.Abs(inputVector.x));
+            animator.SetFloat("forwardSpeed", 0);
+            animator.SetFloat("RightSpeed", 0);
+            animator.SetFloat("BackwardSpeed", 0);
         } // Left
         if (Input.GetKey(KeyCode.D))
         {
             inputVector.x += 1;
             animator.SetFloat("RightSpeed", Mathf.Abs(inputVector.x));
+            animator.SetFloat("forwardSpeed", 0);
+            animator.SetFloat("LeftSpeed", 0);
+            animator.SetFloat("BackwardSpeed", 0);
         } // Right
         if (Input.GetKey(KeyCode.S))
         {
             inputVector.y -= 1;
             animator.SetFloat("forwardSpeed", Mathf.Abs(inputVector.y));
+            animator.SetFloat("LeftSpeed", 0);
+            animator.SetFloat("RightSpeed", 0);
+            animator.SetFloat("BackwardSpeed", 0);
         } // Down
         if (Input.GetKey(KeyCode.W))
         {
             inputVector.y += 1;
             animator.SetFloat("BackwardSpeed", Mathf.Abs(inputVector.y));
+            animator.SetFloat("forwardSpeed", 0);
+            animator.SetFloat("LeftSpeed", 0);
+            animator.SetFloat("RightSpeed", 0);
         } // Up
 
         if (inputVector == Vector2.zero)
