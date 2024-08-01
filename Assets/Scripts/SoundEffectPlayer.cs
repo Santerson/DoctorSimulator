@@ -10,6 +10,10 @@ public class SoundEffectPlayer : MonoBehaviour
     [SerializeField] AudioSource TakingMed;
     [SerializeField] AudioSource RightMed;
     [SerializeField] AudioSource WrongMed;
+
+    [SerializeField] AudioSource MenuMusic;
+    [SerializeField] AudioSource GameplayMusic;
+
     public void PlayClickSound()
     {
         ButtonClick.Play();
@@ -33,5 +37,24 @@ public class SoundEffectPlayer : MonoBehaviour
     public void PlayWrongMed()
     {
         WrongMed.Play();
+    }
+
+    //LOOPING TRACKS
+    public void StartMenuMusic() 
+    {
+        MenuMusic.Play();
+    }
+    public void StopMenuMusic()
+    {
+        MenuMusic.Stop();
+    }
+
+    public void PlayGameplayMusic()
+    {
+        GameplayMusic.Play();
+    }
+    public void StopGameplayMusic()
+    {
+        GameplayMusic.Stop();
     }
 }

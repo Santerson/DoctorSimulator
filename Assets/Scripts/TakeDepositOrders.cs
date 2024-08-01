@@ -40,6 +40,13 @@ public class TakeDepositOrders : MonoBehaviour
         if (Impatience <= 0)
         {
             SceneManager.LoadScene("End");
+            try
+            {
+                FindObjectOfType<SoundEffectPlayer>().StopGameplayMusic();
+                FindObjectOfType<SoundEffectPlayer>().StartMenuMusic();
+                FindObjectOfType<SoundEffectPlayer>().PlayBells();
+            }
+            catch { Debug.LogError("Play from start screen for sound effects"); }
             FindObjectOfType<FinalScore>().GameLose();
             FindObjectOfType<Scorekeeper>().LoseGame();
         }
