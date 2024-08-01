@@ -35,10 +35,9 @@ public class Pause : MonoBehaviour
     private void PauseGame()
     {
         transform.position = Vector2.zero;
-
     }
     private void ResumeGame()
     {
-        throw new NotImplementedException();
+        transform.position = Position;
     }
 }

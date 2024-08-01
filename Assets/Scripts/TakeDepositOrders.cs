@@ -36,6 +36,7 @@ public class TakeDepositOrders : MonoBehaviour
 
     private void Update()
     {
+        if (!FindObjectOfType<Pause>().GamePaused) 
         Impatience -= Time.deltaTime;
         ImpatienceText.text = $"DAY LEFT: {Impatience:#0.0}s";
         if (Impatience <= 0)

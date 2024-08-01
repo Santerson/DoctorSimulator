@@ -45,10 +45,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        MovePlayer();
-        float speed = RefRigidbody.velocity.magnitude;
-        //Debug.Log(stamina);
-        //Debug.Log(PlayerMaxMoveSpeed);
+        if (!FindObjectOfType<Pause>().GamePaused)
+        {
+            MovePlayer();
+            float speed = RefRigidbody.velocity.magnitude;
+            //Debug.Log(stamina);
+            //Debug.Log(PlayerMaxMoveSpeed);
+        }
     }
 
     void MovePlayer()
