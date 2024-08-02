@@ -943,7 +943,7 @@ Transform:
   m_GameObject: {fileID: 1089005703}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.029199988, y: -0.0129, z: 0}
+  m_LocalPosition: {x: -0.038, y: -0.0129, z: 0}
   m_LocalScale: {x: 8.916937, y: 5.042873, z: 4.671555}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1224,19 +1224,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Your goal is to make as many orders to make as much money as you can before
-    the end of your shift.
+  m_text: 'Your goal is to complete as many orders as possible before the end of
+    your shift!
 
 
-    A nurse will give you an order of a random assortment
-    of pills. These pills can be found throughout the pharmacy. Press SPACE to pick
-    up the pills, then deliver them to their nurse. Watch out though, you can only
-    carry one pill at once. If you pick up a medicine that is not on the order, you
-    can trash it at the garbage can found at the top left of the pharmacy.
+    A nurse will give you an order of a random assortment of pills.
+    These pills can be found throughout the pharmacy. Press SPACE to pick up the
+    pills, then deliver them to their nurse. Watch out though, you can only carry
+    one pill at once. If you pick up a medicine that is not on the order, you can
+    trash it at the garbage that is found at the top left of the farmacy
 
 
     Use
-    WASD to walk. Press and hold LEFT SHIFT to use sprint.
+    WASD to walk. Press and hold LEFT SHIFT to sprint.
 
 
 '
