@@ -36,6 +36,7 @@ public class Pause : MonoBehaviour
     {
         if (!FindObjectOfType<TakeDepositOrders>().GameStarted) return;
         GamePaused = true;
+        FindObjectOfType<SoundEffectPlayer>().PauseGameplayMusic();
         transform.position = Vector2.zero;
     }
 
@@ -54,6 +55,7 @@ public class Pause : MonoBehaviour
     {
         if (!FindObjectOfType<TakeDepositOrders>().GameStarted) return;
         GamePaused = false;
+        FindObjectOfType<SoundEffectPlayer>().PlayGameplayMusic();
         transform.position = Position;
     }
 

@@ -23,6 +23,7 @@ public class TakeDepositOrders : MonoBehaviour
     float Impatience;
     [SerializeField] TextMeshProUGUI ImpatienceText;
 
+    private bool AlreadyChecked = false;
     float PreGameTime = 3.5f;
     public bool GameStarted = false;
     [SerializeField] TextMeshProUGUI PreGameCountDown;
@@ -129,15 +130,18 @@ public class TakeDepositOrders : MonoBehaviour
     public void CheckGivenMedicine(int medicine)
     {
         bool isInOrder = false;
+        //Failsafe
         if (order.Count <= 0)
         {
             CompletedOrder();
             return;
         }
+
         foreach (int item in order)
         {
             if (item == medicine) isInOrder = true;
         }
+
         if (isInOrder)
         {
             FindObjectOfType<PlayerCloseTo>().AppearingItem.text = "Press space to deposit";
@@ -147,7 +151,16 @@ public class TakeDepositOrders : MonoBehaviour
             }
         }
         else
-        { 
+        {
+            if (!AlreadyChecked)
+            {
+                AlreadyChecked = true;
+                try
+                {
+                    FindObjectOfType<SoundEffectPlayer>().PlayWrongMed();
+                }
+                catch { Debug.LogError("Play from the start for sound effects!"); }
+            }
             FindObjectOfType<PlayerCloseTo>().AppearingItem.text = "Not on the order!";
         }
     }
