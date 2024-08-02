@@ -8,22 +8,30 @@ public class SprintBar : MonoBehaviour
     void Update()
     {
         float PlayerSprint = FindObjectOfType<PlayerMovement>().stamina;
-        /*
-        Gradient color = new Gradient();
-        GradientColorKey[] colors = new GradientColorKey[2];
-        if (PlayerSprint == 100)
+        
+        GetComponent<LineRenderer>().SetPosition(0, new Vector2(FindObjectOfType<PlayerMovement>().stamina / 100 - 1, 0));
+        GetComponent<LineRenderer>().SetPosition(1, new Vector2(-1, 0));
+
+        if (PlayerSprint >= 100)
         {
-            colors[0] = new GradientColorKey(new Color(0,0,0,0), 0.0f);
-            colors[1] = new GradientColorKey(new Color(0, 0, 0, 0), 1.0f);
+            Gradient grad = new Gradient();
+            var colors = new GradientColorKey[2];
+            colors[0] = new GradientColorKey(new Color(0.54f, 1, 0.52f), 0.0f);
+            var alphas = new GradientAlphaKey[1];
+            alphas[0] = new GradientAlphaKey(1.0f, 0.0f);
+            grad.SetKeys(colors, alphas);
+            GetComponent<LineRenderer>().colorGradient = grad;
         }
         else
         {
-            colors[0] = new GradientColorKey(new Color(0, 0, 0, 1), 0.0f);
-            colors[1] = new GradientColorKey(new Color(0, 0, 0, 1), 1.0f);
+            Gradient grad = new Gradient();
+            var colors = new GradientColorKey[2];
+            colors[0] = new GradientColorKey(new Color(0, 0.8f, .08320045f), 0.0f);
+            colors[1] = new GradientColorKey(new Color(0, .409434f, 0.05100772f), 0.0f);
+            var alphas = new GradientAlphaKey[1];
+            alphas[0] = new GradientAlphaKey(1.0f, 0.0f);
+            grad.SetKeys(colors, alphas);
+            GetComponent<LineRenderer>().colorGradient = grad;
         }
-        GetComponent<LineRenderer>().colorGradient = color;
-        */
-        GetComponent<LineRenderer>().SetPosition(0, new Vector2(FindObjectOfType<PlayerMovement>().stamina / 100 - 1, 0));
-        GetComponent<LineRenderer>().SetPosition(1, new Vector2(-1, 0));
     }
 }
