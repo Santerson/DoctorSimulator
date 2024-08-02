@@ -23,7 +23,7 @@ public class TakeDepositOrders : MonoBehaviour
     float Impatience;
     [SerializeField] TextMeshProUGUI ImpatienceText;
 
-    private bool AlreadyChecked = false;
+    public bool AlreadyChecked = false;
     float PreGameTime = 3.5f;
     public bool GameStarted = false;
     [SerializeField] TextMeshProUGUI PreGameCountDown;

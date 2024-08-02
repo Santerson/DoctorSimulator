@@ -32,6 +32,7 @@ public class TrashCan : MonoBehaviour
             if (FindObjectOfType<Pickup>().Holding && Input.GetKey(KeyCode.Space))
             {
                 TrashParticles.Play();
+                FindObjectOfType<TakeDepositOrders>().AlreadyChecked = false;
                 FindObjectOfType<Pickup>().Holding = false;
                 FindObjectOfType<TakeDepositOrders>().ObjectHolding.GetComponent<PickupableObjects>().DropByPlayer();
                 try
